@@ -49,8 +49,6 @@ The player selects a turret type from the UI and places it on a valid position o
 | Select turret | UI button |
 | Place turret | Left mouse click |
 | Move placed turret | Click turret, then click a valid position |
-| Move camera | WASD / mouse edge movement |
-| Zoom camera | Mouse scroll wheel |
 
 ## Core Systems
 
