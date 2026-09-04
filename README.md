@@ -24,19 +24,9 @@ Unlike a fixed-grid tower defence game, this prototype uses procedural path gene
 - Bullet and missile projectile behaviour
 - Explosion and particle effects on impact
 - Turret repositioning after placement
-- Camera movement and zoom controls
 - 3D health bar for the protect tower
 - Modular C# scripts for gameplay systems
 
-## Tech Stack
-
-- Unity
-- C#
-- Unity Physics Raycasting
-- Unity UI / TextMeshPro
-- Prefab-based gameplay systems
-- Particle effects
-- Git / GitHub
 
 ## Gameplay
 
