@@ -7,6 +7,9 @@ public class Missile : MonoBehaviour
     public float speed = 8f;
     public float rotateSpeed = 200f;
 
+    [Header("Damage")]
+    public float damage = 75f;
+
     [Header("Impact")]
     public GameObject impactEffect;
     public float effectDestroyTime = 2f;
@@ -24,8 +27,11 @@ public class Missile : MonoBehaviour
             return;
         }
 
-        Vector3 direction = target.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        Vector3 direction =
+            target.position - transform.position;
+
+        float distanceThisFrame =
+            speed * Time.deltaTime;
 
         if (direction.magnitude <= distanceThisFrame)
         {
@@ -33,14 +39,19 @@ public class Missile : MonoBehaviour
             return;
         }
 
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.RotateTowards(
-            transform.rotation,
-            lookRotation,
-            rotateSpeed * Time.deltaTime
-        );
+        Quaternion lookRotation =
+            Quaternion.LookRotation(direction);
 
-        transform.Translate(Vector3.forward * distanceThisFrame);
+        transform.rotation =
+            Quaternion.RotateTowards(
+                transform.rotation,
+                lookRotation,
+                rotateSpeed * Time.deltaTime
+            );
+
+        transform.Translate(
+            Vector3.forward * distanceThisFrame
+        );
     }
 
     void HitTarget()
@@ -53,10 +64,20 @@ public class Missile : MonoBehaviour
                 transform.rotation
             );
 
-            Destroy(effect, effectDestroyTime);
+            Destroy(
+                effect,
+                effectDestroyTime
+            );
         }
 
-        Destroy(target.gameObject);
+        EnemyHealth enemyHealth =
+            target.GetComponent<EnemyHealth>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

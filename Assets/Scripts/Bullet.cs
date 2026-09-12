@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 
     public float speed = 70f;
 
+    [Header("Damage")]
+    public float damage = 50f;
+
     [Header("Impact Effect")]
     public GameObject impactEffect;
     public float effectDestroyTime = 2f;
@@ -23,8 +26,11 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        Vector3 dir = target.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        Vector3 dir =
+            target.position - transform.position;
+
+        float distanceThisFrame =
+            speed * Time.deltaTime;
 
         if (dir.magnitude <= distanceThisFrame)
         {
@@ -32,7 +38,11 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.Translate(
+            dir.normalized * distanceThisFrame,
+            Space.World
+        );
+
         transform.LookAt(target);
     }
 
@@ -46,10 +56,20 @@ public class Bullet : MonoBehaviour
                 transform.rotation
             );
 
-            Destroy(effectInstance, effectDestroyTime);
+            Destroy(
+                effectInstance,
+                effectDestroyTime
+            );
         }
 
-        Destroy(target.gameObject);
+        EnemyHealth enemyHealth =
+            target.GetComponent<EnemyHealth>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

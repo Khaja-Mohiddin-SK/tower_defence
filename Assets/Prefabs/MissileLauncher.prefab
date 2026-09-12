@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Turret
   range: 20
   enemyTag: Enemy
-  bulletPrefab: {fileID: 8959024188408452287, guid: 6f38c756e400bfe469a7aad48f7437ef, type: 3}
+  bulletPrefab: {fileID: 8649313677943158711, guid: 8fe96a954874e434cad2ae5cb4c7d7f6, type: 3}
   fireRate: 0.5
   partToRotate: {fileID: 6918031690313688366}
   turnSpeed: 10

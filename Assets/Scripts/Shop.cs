@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [Header("Turret Prefabs")]
-    public GameObject standardTurret;
-    public GameObject missileLauncher;
+    [Header("Turrets")]
+    public TurretBlueprint standardTurret;
+    public TurretBlueprint missileLauncher;
+    public TurretBlueprint laserBeamer;
 
     private BuildManager buildManager;
 
@@ -23,5 +24,11 @@ public class Shop : MonoBehaviour
     {
         Debug.Log("Missile Launcher Selected");
         buildManager.SelectTurretToBuild(missileLauncher);
+    }
+
+    public void SelectLaserBeamer()
+    {
+        Debug.Log("Laser Beamer Selected");
+        buildManager.SelectTurretToBuild(laserBeamer);
     }
 }
